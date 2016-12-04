@@ -82,7 +82,7 @@ public class EmailSender {
     }
 
     private String createText(UnconfirmedUser unconfirmedUser) {
-        String link = format("http://%s", hostAddress);
+        String link = format("http://%s:8080", hostAddress);
         return format(emailTemplate,
                 link,
                 link + "/confirmationRegistration/" + unconfirmedUser.getId(),

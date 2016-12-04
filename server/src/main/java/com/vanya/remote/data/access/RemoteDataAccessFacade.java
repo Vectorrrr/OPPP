@@ -90,14 +90,14 @@ public class RemoteDataAccessFacade implements DataAccessFacade {
         Jalousie jalousie = getJalousie(userId, jalousieId);
         jalousie.addNewState(state);
         changeJalousies(userId,jalousieId,jalousie);
-        restTemplate.postForLocation(jalousie.getAllowableHost()+"/addState",state,State.class);
+        restTemplate.postForLocation(jalousie.getHost()+"/addState",state,State.class);
     }
 
     public void removeState(long userId, long jalousieId, long stateId) {
         Jalousie jalousie = getJalousie(userId, jalousieId);
         jalousie.removeState((int) stateId);
         changeJalousies(userId,jalousieId,jalousie);
-        restTemplate.delete(jalousie.getAllowableHost() + "/state/" + stateId);
+        restTemplate.delete(jalousie.getHost() + "/state/" + stateId);
     }
 
     public List<State> getAllStates(long userId, long jalousieId) {

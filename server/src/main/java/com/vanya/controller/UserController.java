@@ -26,11 +26,7 @@ public class UserController {
         return dataAccessFacade.getAllUsers();
     }
 
-    @RequestMapping(value="/addUser",method = POST, consumes = "application/json")
-    public void addUser(@RequestBody User user){
-        //todo add validate
-        dataAccessFacade.saveUser(user);
-    }
+
 
     @RequestMapping(value="/user/{id}",method = DELETE,consumes = "application/json")
     public void removeUser(@PathVariable("id") long id){

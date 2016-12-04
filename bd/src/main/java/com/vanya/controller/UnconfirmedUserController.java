@@ -1,6 +1,7 @@
 package com.vanya.controller;
 
 import com.vanya.data.access.api.DataAccessFacade;
+import com.vanya.data.access.impl.DataAccessFacadeMongoBDImpl;
 import com.vanya.model.UnconfirmedUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,7 +18,7 @@ import static org.springframework.web.bind.annotation.RequestMethod.*;
 @RestController
 public class UnconfirmedUserController {
     @Autowired
-    private DataAccessFacade dataAccessFacade;
+    private DataAccessFacadeMongoBDImpl dataAccessFacade;
 
     @RequestMapping(value = "/unconfirmedUser/{id}", method = GET)
     public UnconfirmedUser getUnconfirmedUser(@PathVariable("id") long id) {
