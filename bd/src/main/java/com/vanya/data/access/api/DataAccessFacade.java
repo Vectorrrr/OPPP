@@ -1,6 +1,7 @@
 package com.vanya.data.access.api;
 
 import com.vanya.model.Jalousie;
+import com.vanya.model.UnconfirmedUser;
 import com.vanya.model.User;
 
 import java.util.List;
@@ -26,6 +27,15 @@ public interface DataAccessFacade {
 
     List<Jalousie> getAllJalousies(long userId);
 
+    Jalousie getJalousie(long userId, long jalousieId);
+
     void changeJalousies(long userId, long id, Jalousie jalousie);
-    
+
+    UnconfirmedUser getUnconfirmedUser(long id);
+
+    void saveUnconfirmedUser(UnconfirmedUser unconfirmedUser);
+
+    void deleteUnconfirmedUser(long id);
+
+
 }

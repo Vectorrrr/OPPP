@@ -11,10 +11,13 @@ import java.util.List;
 public interface JalousieDao {
     void addJalousieForUser(long userId, Jalousie jalousie);
 
+
+    Jalousie getJalousie(long userId, long jalousieId);
+
     void removeJalousie(long userId, long jalId);
 
     List<Jalousie> getAllJalousies(long userId);
 
     void changeJalousies(long userId, long id, Jalousie jalousie);
-    
+
 }

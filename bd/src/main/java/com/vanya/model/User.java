@@ -64,6 +64,13 @@ public class User {
         this.email = email;
     }
 
+    public static User getUser(UnconfirmedUser unconfirmedUser){
+        User user = new User();
+        user.setName(unconfirmedUser.getName());
+        user.setEmail(unconfirmedUser.getEmail());
+        user.setPassword(unconfirmedUser.getPassword());
+        return user;
+    }
     @Override
     public String toString() {
         return "User{" +

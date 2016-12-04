@@ -2,8 +2,10 @@ package com.vanya.data.access.impl;
 
 import com.vanya.data.access.api.DataAccessFacade;
 import com.vanya.data.access.api.JalousieDao;
+import com.vanya.data.access.api.UnconfirmedUserDao;
 import com.vanya.data.access.api.UserDao;
 import com.vanya.model.Jalousie;
+import com.vanya.model.UnconfirmedUser;
 import com.vanya.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -64,8 +66,30 @@ public class DataAccessFacadeMongoBDImpl implements DataAccessFacade {
     }
 
     @Override
+    public Jalousie getJalousie(long userId, long jalousieId) {
+        return jalousieDao.getJalousie(userId,jalousieId);
+    }
+
+    @Override
     public void changeJalousies(long userId, long id, Jalousie jalousie) {
         jalousieDao.changeJalousies(userId,id,jalousie);
     }
 
+    @Autowired
+    private UnconfirmedUserDao unconfirmedUserDao;
+
+    @Override
+    public UnconfirmedUser getUnconfirmedUser(long id){
+        return unconfirmedUserDao.getUncofirmedUser(id);
+    }
+
+    @Override
+    public void saveUnconfirmedUser(UnconfirmedUser unconfirmedUser){
+        unconfirmedUserDao.saveUncomfirmedUser(unconfirmedUser);
+    }
+
+    @Override
+    public void deleteUnconfirmedUser(long id){
+        unconfirmedUserDao.deleteUnconfirmedUser(id);
+    }
 }

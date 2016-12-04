@@ -19,14 +19,14 @@ public class Jalousie {
     private long userId;
     private int weight;
     private int high;
-    private String allowableHost;
+    private String host;
     private List<State> states = new ArrayList<>();
     private int totalEnergy;
 
     public Jalousie(int weight, int high, String allowableHost) {
         this.weight = weight;
         this.high = high;
-        this.allowableHost = allowableHost;
+        this.host = allowableHost;
     }
 
     public Jalousie(long id, long userId, int weight, int high) {
@@ -35,6 +35,7 @@ public class Jalousie {
         this.weight = weight;
         this.high = high;
     }
+
 
     public Jalousie(){
         this.id=new Date().getTime();
@@ -56,12 +57,12 @@ public class Jalousie {
         this.high = high;
     }
 
-    public String getAllowableHost() {
-        return allowableHost;
+    public String getHost() {
+        return host;
     }
 
-    public void setAllowableHost(String allowableHost) {
-        this.allowableHost = allowableHost;
+    public void setHost(String host) {
+        this.host = host;
     }
 
     public List<State> getStates() {
@@ -87,7 +88,7 @@ public class Jalousie {
                 ", userId=" + userId +
                 ", weight=" + weight +
                 ", high=" + high +
-                ", allowableHost='" + allowableHost + '\'' +
+                ", host='" + host + '\'' +
                 ", states=" + states +
                 ", totalEnergy=" + totalEnergy +
                 '}';

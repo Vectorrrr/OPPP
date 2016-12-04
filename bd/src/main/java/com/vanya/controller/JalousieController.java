@@ -22,24 +22,30 @@ public class JalousieController {
     private DataAccessFacade dataAccessFacade;
 
     @RequestMapping(value = "/user/{userId}/addJalousie", method = POST, consumes = "application/json")
-    public void addJalousie(@PathVariable("userId") long userId, @RequestBody Jalousie jalousie){
-         dataAccessFacade.addJalousieForUser(userId, jalousie);
+    public void addJalousie(@PathVariable("userId") long userId, @RequestBody Jalousie jalousie) {
+        dataAccessFacade.addJalousieForUser(userId, jalousie);
     }
 
     @RequestMapping(value = "/user/{userId}/jalousie/{id}", method = DELETE)
-    public void removeJalousie(@PathVariable("userId") long userId, @PathVariable("id") long jalId){
-        dataAccessFacade.removeJalousie(userId,jalId);
+    public void removeJalousie(@PathVariable("userId") long userId, @PathVariable("id") long jalId) {
+        dataAccessFacade.removeJalousie(userId, jalId);
     }
 
-    @RequestMapping(value = "/user/{userId}/jalousies",method = GET,produces = "application/json")
-    public List<Jalousie> getJalousies(@PathVariable("userId") long userId){
+    @RequestMapping(value = "/user/{userId}/jalousies", method = GET, produces = "application/json")
+    public List<Jalousie> getJalousies(@PathVariable("userId") long userId) {
         return dataAccessFacade.getAllJalousies(userId);
     }
+
+    @RequestMapping(value = "/user/{userId}/jalousie/{jalousieId}", method = GET, produces = "application/json")
+    public Jalousie getJalousie(@PathVariable("userId") long userId,
+                                      @PathVariable("jalousieId") long jalousieId) {
+        return dataAccessFacade.getJalousie(userId,jalousieId);
+    }
     @RequestMapping(value = "/user/{userId}/jalousie/{id}", method = PUT, consumes = "application/json")
-    public void  changeJalousies(@PathVariable("userId") long userId,
-                                 @PathVariable("id") long id,
-                                 @RequestBody Jalousie jalousie){
-        dataAccessFacade.changeJalousies(userId,id,jalousie);
+    public void changeJalousies(@PathVariable("userId") long userId,
+                                @PathVariable("id") long id,
+                                @RequestBody Jalousie jalousie) {
+        dataAccessFacade.changeJalousies(userId, id, jalousie);
     }
 
 }

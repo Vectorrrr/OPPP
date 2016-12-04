@@ -25,7 +25,13 @@ public class JalousieDaoMongoImpl implements JalousieDao {
         //todo think about add jalousies only for exist user
         mongoOperation.save(jalousie);
     }
-
+    @Override
+    public Jalousie getJalousie(long userId, long jalousieId){
+        return mongoOperation.findOne(new Query().
+                        addCriteria(Criteria.where("userId").is(userId)).
+                        addCriteria(Criteria.where("id").is(jalousieId)),
+                Jalousie.class);
+    }
     @Override
     public void removeJalousie(long userId, long jalId) {
         mongoOperation.remove(new Query().
@@ -43,12 +49,6 @@ public class JalousieDaoMongoImpl implements JalousieDao {
 
     @Override
     public void changeJalousies(long userId, long id, Jalousie jalousie) {
-        Update update=new Update();
-        update.set("weight",jalousie.getWeight());
-        update.set("high",jalousie.getHigh());
-        update.set("allowableHost",jalousie.getAllowableHost());
-        mongoOperation.updateFirst(new Query().
-                addCriteria(Criteria.where("id").is(id)).
-                addCriteria(Criteria.where("userId").is(userId)),update,Jalousie.class);
+        addJalousieForUser(userId,jalousie);
     }
 }
